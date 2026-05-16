@@ -80,7 +80,8 @@ header{background:#fff;border-bottom:1px solid var(--gray-3);box-shadow:var(--sh
 .cnav-link.has-drop::after{content:'▾';font-size:10px;margin-left:2px;opacity:.7}
 
 /* ── PAGE LAYOUT ── */
-.page{max-width:1320px;margin:0 auto;padding:20px 1.5rem 60px;display:grid;grid-template-columns:220px 1fr;gap:20px;align-items:start}
+.page{max-width:1320px;margin:0 auto;padding:20px 1.5rem 0;display:grid;grid-template-columns:220px 1fr;gap:20px;align-items:start}
+.full-sections{max-width:1320px;margin:0 auto;padding:20px 1.5rem 60px;display:flex;flex-direction:column;gap:20px}
 
 /* ── SIDEBAR ── */
 .sidebar{background:#fff;border-radius:var(--radius-md);border:1px solid var(--gray-3);overflow:hidden;box-shadow:var(--shadow)}
