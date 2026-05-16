@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Subcategoría | IMEXTEC Electrónica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Barlow:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/styles.css">
+<style>
+/* ── BREADCRUMB ── */
+.breadcrumb-bar{background:#fff;border-bottom:1px solid var(--gray-3)}
+.breadcrumb{max-width:1320px;margin:0 auto;padding:10px 1.5rem;display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--gray-5);flex-wrap:wrap}
+.breadcrumb a{color:var(--gray-5);transition:color .15s}
+.breadcrumb a:hover{color:var(--green)}
+.breadcrumb .sep{color:var(--gray-3);font-size:14px}
+.breadcrumb .current{color:var(--navy);font-weight:600}
+
+/* ── SUB PAGE LAYOUT ── */
+.sub-page{max-width:1320px;margin:0 auto;padding:20px 1.5rem 60px;display:grid;grid-template-columns:240px 1fr;gap:20px;align-items:start}
+
+/* ── FILTER SIDEBAR ── */
+.filter-sidebar{background:#fff;border:1px solid var(--gray-3);border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow);position:sticky;top:58px}
+.filter-header{background:var(--navy);color:#fff;padding:13px 16px;font-family:var(--font-head);font-weight:700;font-size:13px;letter-spacing:.05em;text-transform:uppercase;display:flex;align-items:center;justify-content:space-between}
+.filter-clear{font-size:11px;font-weight:400;opacity:.65;cursor:pointer;text-transform:none;letter-spacing:0;transition:opacity .15s}
+.filter-clear:hover{opacity:1}
+.filter-section{border-bottom:1px solid var(--gray-2);padding:14px 16px}
+.filter-section:last-child{border-bottom:none}
+.filter-section-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--navy);margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;cursor:pointer}
+.filter-section-title .arr{font-size:11px;color:var(--gray-4);transition:transform .2s}
+.filter-section-title.open .arr{transform:rotate(90deg)}
+
+/* Price range */
+.price-inputs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+.price-input{border:1px solid var(--gray-3);border-radius:var(--radius);padding:7px 10px;font-size:12px;font-family:var(--font);color:var(--dark);outline:none;width:100%;transition:border-color .15s}
+.price-input:focus{border-color:var(--green)}
+.price-sep{display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--gray-4)}
+.price-apply{width:100%;background:var(--navy);color:#fff;border-radius:var(--radius);padding:8px;font-size:12px;font-weight:700;cursor:pointer;transition:background .15s}
+.price-apply:hover{background:var(--green)}
+
+/* Brand checkboxes */
+.brand-list{display:flex;flex-direction:column;gap:8px;max-height:180px;overflow-y:auto;scrollbar-width:thin}
+.brand-list::-webkit-scrollbar{width:4px}
+.brand-list::-webkit-scrollbar-thumb{background:var(--gray-3);border-radius:2px}
+.brand-check{display:flex;align-items:center;gap:8px;cursor:pointer;font-size:13px;color:var(--gray-6);transition:color .15s}
+.brand-check:hover{color:var(--navy)}
+.brand-check input[type=checkbox]{accent-color:var(--green);width:15px;height:15px;cursor:pointer;flex-shrink:0}
+.brand-check .bc-count{margin-left:auto;font-size:11px;color:var(--gray-4)}
+
+/* Rating filter */
+.rating-list{display:flex;flex-direction:column;gap:8px}
+.rating-opt{display:flex;align-items:center;gap:8px;cursor:pointer;font-size:13px;color:var(--gray-6);transition:color .15s}
+.rating-opt:hover{color:var(--navy)}
+.rating-opt input[type=radio]{accent-color:var(--green);width:15px;height:15px;cursor:pointer;flex-shrink:0}
+.stars-txt{color:#f6882a;font-size:12px;letter-spacing:-.5px}
+.rating-opt .bc-count{margin-left:auto;font-size:11px;color:var(--gray-4)}
+
+/* Stock */
+.stock-check{display:flex;align-items:center;gap:8px;cursor:pointer;font-size:13px;color:var(--gray-6)}
+.stock-check input[type=checkbox]{accent-color:var(--green);width:15px;height:15px;cursor:pointer}
+
+/* ── MAIN COLUMN ── */
+.sub-main{display:flex;flex-direction:column;gap:16px}
+
+/* Category header */
+.cat-header{background:#fff;border:1px solid var(--gray-3);border-radius:var(--radius-md);padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.cat-header-left h1{font-family:var(--font-head);font-size:22px;font-weight:800;color:var(--navy);margin-bottom:4px}
+.cat-header-left p{font-size:13px;color:var(--gray-5)}
+.cat-header-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.result-count{font-size:13px;font-weight:600;color:var(--gray-5);white-space:nowrap}
+.result-count b{color:var(--navy)}
+
+/* Results bar */
+.results-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.results-info{font-size:13px;color:var(--gray-5)}
+.results-info b{color:var(--navy)}
+.sort-row{display:flex;align-items:center;gap:10px}
+.sort-lbl{font-size:12.5px;font-weight:600;color:var(--gray-5);white-space:nowrap}
+.sort-select{border:1px solid var(--gray-3);border-radius:var(--radius);padding:7px 12px;font-size:13px;font-family:var(--font);color:var(--dark);outline:none;cursor:pointer;background:#fff;transition:border-color .15s;appearance:none;padding-right:28px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236c757d' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center}
+.sort-select:focus{border-color:var(--green)}
+.view-btns{display:flex;gap:4px}
+.view-btn{width:32px;height:32px;background:#fff;border:1px solid var(--gray-3);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--gray-5);transition:all .15s;font-size:14px}
+.view-btn.active,.view-btn:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
+
+/* Active filters */
+.active-filters{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.filter-tag{display:flex;align-items:center;gap:5px;background:var(--green-light);border:1px solid rgba(24,184,58,.25);color:var(--green);font-size:12px;font-weight:600;padding:4px 10px;border-radius:20px;cursor:pointer;transition:all .15s}
+.filter-tag:hover{background:#fce8e8;border-color:rgba(229,62,62,.25);color:var(--red)}
+.filter-tag .x{font-size:14px;line-height:1;margin-left:1px}
+
+/* Product grid sub */
+.sub-prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+
+/* Pagination */
+.pagination{display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 0}
+.page-btn{width:36px;height:36px;background:#fff;border:1px solid var(--gray-3);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:var(--gray-6);cursor:pointer;transition:all .15s}
+.page-btn:hover,.page-btn.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.page-btn.active{pointer-events:none}
+.page-dots{color:var(--gray-4);font-size:14px;padding:0 4px}
+
+@media(max-width:1024px){.sub-page{grid-template-columns:1fr}.filter-sidebar{display:none}.sub-prod-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:768px){.sub-prod-grid{grid-template-columns:repeat(2,1fr)}.cat-header{flex-direction:column;align-items:flex-start}.results-bar{flex-direction:column;align-items:flex-start}}
+</style>
+</head>
+<body>
+
+<!-- TOP INFO BAR -->
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <div class="top-bar-left">
+      <span>📦 <b>Despacho gratis</b> sobre $30.000</span>
+      <span>💳 Hasta <b>6 cuotas sin interés</b></span>
+      <span>🚚 <b>Envíos</b> a todo Chile</span>
+    </div>
+    <div class="top-bar-right">
+      <a href="#">🗺️ Sucursales</a>
+      <a href="#">❓ Cómo Comprar</a>
+      <a href="#">📋 Seguimiento</a>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN HEADER -->
+<header>
+  <div class="header-main">
+    <a href="../index.html"><img class="logo-img" src="../images/logo.webp" alt="IMEXTEC Electrónica"></a>
+    <div class="header-search">
+      <input type="text" id="searchInput" placeholder="Buscar productos, marcas, categorías...">
+      <button>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </button>
+    </div>
+    <nav class="header-nav">
+      <a href="#" class="hn-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        Mi Cuenta
+      </a>
+      <a href="productos.html" class="hn-link">🛍️ Productos</a>
+      <a href="contacto.html" class="hn-link">✉️ Contacto</a>
+      <button class="cart-btn">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        $0 <span class="cart-badge" id="cart-count">0</span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<!-- CATEGORY NAVBAR -->
+<nav class="cat-navbar">
+  <div class="cat-navbar-inner">
+    <div class="cnav-item">
+      <a href="#" class="cnav-link has-drop">🔊 Audio</a>
+      <div class="cnav-dropdown">
+        <a href="subcategoria.html?cat=Audio&sub=Audífonos+Con+Cable">🎧 Audífonos Con Cable</a>
+        <a href="subcategoria.html?cat=Audio&sub=Audífonos+Inalámbricos">📻 Audífonos Inalámbricos</a>
+        <a href="subcategoria.html?cat=Audio&sub=Cables+y+Accesorios">🔌 Cables y Accesorios</a>
+        <a href="subcategoria.html?cat=Audio&sub=Micrófonos">🎙️ Micrófonos</a>
+        <a href="subcategoria.html?cat=Audio&sub=Radios+y+Parlantes">📢 Radios y Parlantes</a>
+      </div>
+    </div>
+    <div class="cnav-item">
+      <a href="#" class="cnav-link has-drop">📷 Cámaras</a>
+      <div class="cnav-dropdown">
+        <a href="subcategoria.html?cat=Cámaras&sub=Accesorios+Cámaras">🎒 Accesorios Cámaras</a>
+        <a href="subcategoria.html?cat=Cámaras&sub=Cámaras+de+Seguridad">🔐 Cámaras de Seguridad</a>
+        <a href="subcategoria.html?cat=Cámaras&sub=Cámaras+Auto">🚗 Cámaras Auto</a>
+      </div>
+    </div>
+    <div class="cnav-item">
+      <a href="#" class="cnav-link has-drop">💻 Computación</a>
+      <div class="cnav-dropdown">
+        <a href="subcategoria.html?cat=Computación&sub=Accesorios+Computadores">🖥️ Accesorios Computadores</a>
+        <a href="subcategoria.html?cat=Computación&sub=Almacenamiento">💾 Almacenamiento</a>
+        <a href="subcategoria.html?cat=Computación&sub=Cables+Computación">🔌 Cables Computación</a>
+        <a href="subcategoria.html?cat=Computación&sub=Cargadores+Notebook">🔋 Cargadores Notebook</a>
+        <a href="subcategoria.html?cat=Computación&sub=Conectividad+y+Redes">📡 Conectividad y Redes</a>
+        <a href="subcategoria.html?cat=Computación&sub=Mouse+y+Teclados">🖱️ Mouse y Teclados</a>
+        <a href="subcategoria.html?cat=Computación&sub=Teclados">⌨️ Teclados</a>
+      </div>
+    </div>
+    <div class="cnav-item">
+      <a href="#" class="cnav-link has-drop">⚡ Electrónica</a>
+      <div class="cnav-dropdown">
+        <a href="subcategoria.html?cat=Electrónica&sub=Accesorios+Electrónica">🔧 Accesorios Electrónica</a>
+        <a href="subcategoria.html?cat=Electrónica&sub=Pilas+y+Baterías">🔋 Pilas y Baterías</a>
+        <a href="subcategoria.html?cat=Electrónica&sub=Cargadores+de+Pilas">⚡ Cargadores de Pilas</a>
+        <a href="subcategoria.html?cat=Electrónica&sub=Cargadores+y+Transformadores">🔌 Cargadores y Transformadores</a>
+        <a href="subcategoria.html?cat=Electrónica&sub=Calculadoras">🧮 Calculadoras</a>
+      </div>
+    </div>
+    <div class="cnav-item">
+      <a href="#" class="cnav-link has-drop">🎮 Gamers</a>
+      <div class="cnav-dropdown">
+        <a href="subcategoria.html?cat=Gamers&sub=Audífonos+Gamers">🎧 Audífonos Gamers</a>
+        <a href="subcategoria.html?cat=Gamers&sub=Teclados+Gamers">⌨️ Teclados Gamers</a>
+        <a href="subcategoria.html?cat=Gamers&sub=Accesorios+Gamers">🕹️ Accesorios Gamers</a>
+        <a href="subcategoria.html?cat=Gamers&sub=Mouse+Gamers">🖱️ Mouse Gamers</a>
+        <a href="subcategoria.html?cat=Gamers&sub=Joystick+y+Gamepad">🎮 Joystick y Gamepad</a>
+        <a href="subcategoria.html?cat=Gamers&sub=Consolas+de+Juegos">🎮 Consolas de Juegos</a>
+      </div>
+    </div>
+    <div class="cnav-item">
+      <a href="#" class="cnav-link has-drop">📺 Video y Televisión</a>
+      <div class="cnav-dropdown">
+        <a href="subcategoria.html?cat=Video+y+Televisión&sub=Antenas+y+Controles+TV">📡 Antenas y Controles TV</a>
+        <a href="subcategoria.html?cat=Video+y+Televisión&sub=Cables+y+Adaptadores">🔌 Cables y Adaptadores</a>
+        <a href="subcategoria.html?cat=Video+y+Televisión&sub=Soportes+TV">🖥️ Soportes TV</a>
+        <a href="subcategoria.html?cat=Video+y+Televisión&sub=TV+Box">📦 TV Box</a>
+      </div>
+    </div>
+    <div class="cnav-item">
+      <a href="#" class="cnav-link has-drop">🔒 Seguridad</a>
+      <div class="cnav-dropdown">
+        <a href="subcategoria.html?cat=Seguridad&sub=Accesorios+Seguridad">🛡️ Accesorios Seguridad</a>
+        <a href="subcategoria.html?cat=Seguridad&sub=Timbres+y+Alarmas">🔔 Timbres y Alarmas</a>
+        <a href="subcategoria.html?cat=Seguridad&sub=Radios+UHF/VHF">📻 Radios UHF/VHF</a>
+      </div>
+    </div>
+    <div class="cnav-item">
+      <a href="#" class="cnav-link has-drop">📱 Telefonía</a>
+      <div class="cnav-dropdown">
+        <a href="subcategoria.html?cat=Telefonía&sub=Smartwatch+y+Smartband">⌚ Smartwatch y Smartband</a>
+        <a href="subcategoria.html?cat=Telefonía&sub=Accesorios+Smartphone">📱 Accesorios Smartphone</a>
+        <a href="subcategoria.html?cat=Telefonía&sub=Cables+Smartphones">🔌 Cables Smartphones</a>
+        <a href="subcategoria.html?cat=Telefonía&sub=Teléfono+Senior">📞 Teléfono Senior</a>
+        <a href="subcategoria.html?cat=Telefonía&sub=Soportes+Celulares">🗜️ Soportes Celulares</a>
+        <a href="subcategoria.html?cat=Telefonía&sub=Cargadores+Smartphones">⚡ Cargadores Smartphones</a>
+        <a href="subcategoria.html?cat=Telefonía&sub=Baterías+Externas">🔋 Baterías Externas</a>
+      </div>
+    </div>
+    <div class="cnav-item">
+      <a href="#" class="cnav-link has-drop">💡 Iluminación</a>
+      <div class="cnav-dropdown">
+        <a href="subcategoria.html?cat=Iluminación&sub=Accesorios+Linternas">🔦 Accesorios Linternas</a>
+        <a href="subcategoria.html?cat=Iluminación&sub=Punteros+Láser">🔴 Punteros Láser</a>
+        <a href="subcategoria.html?cat=Iluminación&sub=Cintas+LED">💡 Cintas LED</a>
+        <a href="subcategoria.html?cat=Iluminación&sub=Linternas+y+Focos+LED">🔦 Linternas y Focos LED</a>
+        <a href="subcategoria.html?cat=Iluminación&sub=Luces+y+Accesorios+Fiesta">🎉 Luces y Accesorios Fiesta</a>
+      </div>
+    </div>
+    <div class="cnav-item">
+      <a href="#" class="cnav-link has-drop">🎵 Música</a>
+      <div class="cnav-dropdown">
+        <a href="subcategoria.html?cat=Música&sub=Instrumentos">🎸 Instrumentos</a>
+      </div>
+    </div>
+    <div class="cnav-item">
+      <a href="#" class="cnav-link has-drop">🌿 Bienestar y Recreación</a>
+      <div class="cnav-dropdown">
+        <a href="subcategoria.html?cat=Bienestar+y+Recreación&sub=Cuidado+Personal">💆 Cuidado Personal</a>
+        <a href="subcategoria.html?cat=Bienestar+y+Recreación&sub=Recreación">🎯 Recreación</a>
+      </div>
+    </div>
+    <a href="subcategoria.html?cat=Outdoor&sub=Outdoor" class="cnav-link">🌲 Outdoor</a>
+  </div>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb-bar">
+  <nav class="breadcrumb">
+    <a href="../index.html">🏠 Inicio</a>
+    <span class="sep">›</span>
+    <a href="#" id="bc-cat">Categoría</a>
+    <span class="sep">›</span>
+    <span class="current" id="bc-sub">Subcategoría</span>
+  </nav>
+</div>
+
+<!-- SUB PAGE -->
+<div class="sub-page">
+
+  <!-- FILTER SIDEBAR -->
+  <aside class="filter-sidebar">
+    <div class="filter-header">
+      Filtros
+      <span class="filter-clear" onclick="clearFilters()">Limpiar todo</span>
+    </div>
+
+    <!-- PRECIO -->
+    <div class="filter-section">
+      <div class="filter-section-title open" onclick="toggleSection(this)">
+        Precio <span class="arr">›</span>
+      </div>
+      <div class="price-inputs">
+        <input class="price-input" type="number" id="priceMin" placeholder="Mín $">
+        <input class="price-input" type="number" id="priceMax" placeholder="Máx $">
+      </div>
+      <button class="price-apply" onclick="applyPrice()">Aplicar</button>
+    </div>
+
+    <!-- MARCA -->
+    <div class="filter-section">
+      <div class="filter-section-title open" onclick="toggleSection(this)">
+        Marca <span class="arr">›</span>
+      </div>
+      <div class="brand-list">
+        <label class="brand-check"><input type="checkbox"> Sony <span class="bc-count">(12)</span></label>
+        <label class="brand-check"><input type="checkbox"> Samsung <span class="bc-count">(9)</span></label>
+        <label class="brand-check"><input type="checkbox"> Logitech <span class="bc-count">(8)</span></label>
+        <label class="brand-check"><input type="checkbox"> HyperX <span class="bc-count">(7)</span></label>
+        <label class="brand-check"><input type="checkbox"> Razer <span class="bc-count">(6)</span></label>
+        <label class="brand-check"><input type="checkbox"> JBL <span class="bc-count">(5)</span></label>
+        <label class="brand-check"><input type="checkbox"> Redragon <span class="bc-count">(5)</span></label>
+        <label class="brand-check"><input type="checkbox"> Xiaomi <span class="bc-count">(4)</span></label>
+        <label class="brand-check"><input type="checkbox"> Anker <span class="bc-count">(4)</span></label>
+        <label class="brand-check"><input type="checkbox"> TP-Link <span class="bc-count">(3)</span></label>
+      </div>
+    </div>
+
+    <!-- CALIFICACIÓN -->
+    <div class="filter-section">
+      <div class="filter-section-title open" onclick="toggleSection(this)">
+        Calificación <span class="arr">›</span>
+      </div>
+      <div class="rating-list">
+        <label class="rating-opt"><input type="radio" name="rating"> <span class="stars-txt">★★★★★</span> <span class="bc-count">(45)</span></label>
+        <label class="rating-opt"><input type="radio" name="rating"> <span class="stars-txt">★★★★</span>☆ o más <span class="bc-count">(89)</span></label>
+        <label class="rating-opt"><input type="radio" name="rating"> <span class="stars-txt">★★★</span>☆☆ o más <span class="bc-count">(112)</span></label>
+      </div>
+    </div>
+
+    <!-- DISPONIBILIDAD -->
+    <div class="filter-section">
+      <div class="filter-section-title open" onclick="toggleSection(this)">
+        Disponibilidad <span class="arr">›</span>
+      </div>
+      <label class="stock-check"><input type="checkbox" checked> Solo productos en stock</label>
+    </div>
+  </aside>
+
+  <!-- MAIN COLUMN -->
+  <div class="sub-main">
+
+    <!-- CATEGORY HEADER -->
+    <div class="cat-header">
+      <div class="cat-header-left">
+        <h1 id="page-heading">Subcategoría</h1>
+        <p id="page-desc">Encuentra los mejores productos al mejor precio</p>
+      </div>
+      <div class="cat-header-right">
+        <span class="result-count"><b id="result-count">12</b> productos</span>
+      </div>
+    </div>
+
+    <!-- ACTIVE FILTERS -->
+    <div class="active-filters" id="activeFilters" style="display:none">
+      <span style="font-size:12px;font-weight:600;color:var(--gray-5)">Filtros activos:</span>
+    </div>
+
+    <!-- RESULTS BAR -->
+    <div class="results-bar">
+      <div class="results-info">Mostrando <b>1–12</b> de <b id="result-count2">12</b> productos</div>
+      <div class="sort-row">
+        <span class="sort-lbl">Ordenar por:</span>
+        <select class="sort-select" onchange="handleSort(this.value)">
+          <option value="relevancia">Relevancia</option>
+          <option value="precio-asc">Menor precio</option>
+          <option value="precio-desc">Mayor precio</option>
+          <option value="vendidos">Más vendidos</option>
+          <option value="nuevos">Más nuevos</option>
+          <option value="rating">Mejor calificados</option>
+        </select>
+        <div class="view-btns">
+          <button class="view-btn active" title="Cuadrícula" onclick="setView('grid',this)">⊞</button>
+          <button class="view-btn" title="Lista" onclick="setView('list',this)">☰</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRODUCT GRID -->
+    <div class="sub-prod-grid" id="prodGrid">
+
+      <div class="prod-card" onclick="goToProduct('Sony WH-1000XM5 · Noise Cancelling · 30h batería · Hi-Res Audio','Sony','219990','279990','22','🎧')" style="cursor:pointer">
+        <div class="prod-img">
+          <span class="badge-red">-22%</span>
+          <button class="wish" onclick="event.stopPropagation()">♡</button>
+          🎧
+        </div>
+        <div class="prod-body">
+          <div class="prod-brand">Sony</div>
+          <div class="prod-name">WH-1000XM5 · Noise Cancelling · 30h batería · Hi-Res Audio</div>
+          <div class="prod-stars">★★★★★ <span>(408)</span></div>
+          <div><span class="prod-price">$219.990</span><span class="prod-old">$279.990</span></div>
+          <div class="prod-cuotas">6 cuotas de $36.665 sin interés</div>
+          <button class="add-btn" onclick="event.stopPropagation()">🛒 Agregar al carro</button>
+        </div>
+      </div>
+
+      <div class="prod-card" onclick="goToProduct('HyperX Cloud Alpha Wireless · 300h batería · 7.1 Surround · PC/PS5','HyperX','79990','','','🎧','NUEVO')" style="cursor:pointer">
+        <div class="prod-img">
+          <span class="badge-grn">NUEVO</span>
+          <button class="wish" onclick="event.stopPropagation()">♡</button>
+          🎧
+        </div>
+        <div class="prod-body">
+          <div class="prod-brand">HyperX</div>
+          <div class="prod-name">Cloud Alpha Wireless · 300h batería · 7.1 Surround · PC/PS5</div>
+          <div class="prod-stars">★★★★★ <span>(247)</span></div>
+          <div><span class="prod-price">$79.990</span></div>
+          <div class="prod-cuotas">6 cuotas de $13.332 sin interés</div>
+          <button class="add-btn" onclick="event.stopPropagation()">🛒 Agregar al carro</button>
+        </div>
+      </div>
+
+      <div class="prod-card" onclick="goToProduct('JBL Live 770NC · ANC Adaptativo · Bluetooth 5.3 · 65h batería','JBL','59990','69990','15','🎧')" style="cursor:pointer">
+        <div class="prod-img">
+          <span class="badge-red">-15%</span>
+          <button class="wish" onclick="event.stopPropagation()">♡</button>
+          🎧
+        </div>
+        <div class="prod-body">
+          <div class="prod-brand">JBL</div>
+          <div class="prod-name">Live 770NC · ANC Adaptativo · Bluetooth 5.3 · 65h batería</div>
+          <div class="prod-stars">★★★★☆ <span>(183)</span></div>
+          <div><span class="prod-price">$59.990</span><span class="prod-old">$69.990</span></div>
+          <div class="prod-cuotas">6 cuotas de $9.998 sin interés</div>
+          <button class="add-btn" onclick="event.stopPropagation()">🛒 Agregar al carro</button>
+        </div>
+      </div>
+
+      <div class="prod-card" onclick="goToProduct('Razer BlackShark V2 Pro · Wireless · THX 7.1 · 70h batería · PC/PS5','Razer','94990','','','🎧')" style="cursor:pointer">
+        <div class="prod-img">
+          <button class="wish" onclick="event.stopPropagation()">♡</button>
+          🎧
+        </div>
+        <div class="prod-body">
+          <div class="prod-brand">Razer</div>
+          <div class="prod-name">BlackShark V2 Pro · Wireless · THX 7.1 · 70h batería · PC/PS5</div>
+          <div class="prod-stars">★★★★★ <span>(312)</span></div>
+          <div><span class="prod-price">$94.990</span></div>
+          <div class="prod-cuotas">6 cuotas de $15.832 sin interés</div>
+          <button class="add-btn" onclick="event.stopPropagation()">🛒 Agregar al carro</button>
+        </div>
+      </div>
+
+      <div class="prod-card" onclick="goToProduct('Bose QuietComfort 45 · ANC · 24h batería · Modo Aware · Bluetooth','Bose','189990','','','🎧','DESTACADO')" style="cursor:pointer">
+        <div class="prod-img">
+          <span class="badge-org">DESTACADO</span>
+          <button class="wish" onclick="event.stopPropagation()">♡</button>
+          🎧
+        </div>
+        <div class="prod-body">
+          <div class="prod-brand">Bose</div>
+          <div class="prod-name">QuietComfort 45 · ANC · 24h batería · Modo Aware · Bluetooth</div>
+          <div class="prod-stars">★★★★★ <span>(521)</span></div>
+          <div><span class="prod-price">$189.990</span></div>
+          <div class="prod-cuotas">6 cuotas de $31.665 sin interés</div>
+          <button class="add-btn" onclick="event.stopPropagation()">🛒 Agregar al carro</button>
+        </div>
+      </div>
+
+      <div class="prod-card" onclick="goToProduct('Logitech G735 · Wireless · RGB · PC/Mac · Multiplataforma · 56h','Logitech','69990','99990','30','🎧')" style="cursor:pointer">
+        <div class="prod-img">
+          <span class="badge-red">-30%</span>
+          <button class="wish" onclick="event.stopPropagation()">♡</button>
+          🎧
+        </div>
+        <div class="prod-body">
+          <div class="prod-brand">Logitech</div>
+          <div class="prod-name">G735 · Wireless · RGB · PC / Mac · Multiplataforma · 56h</div>
+          <div class="prod-stars">★★★★☆ <span>(76)</span></div>
+          <div><span class="prod-price">$69.990</span><span class="prod-old">$99.990</span></div>
+          <div class="prod-cuotas">6 cuotas de $11.665 sin interés</div>
+          <button class="add-btn" onclick="event.stopPropagation()">🛒 Agregar al carro</button>
+        </div>
+      </div>
+
+      <div class="prod-card" onclick="goToProduct('Samsung Galaxy Buds2 Pro · ANC · Hi-Fi 24bit · IPX7 · Estuche carga','Samsung','79990','','','🎧')" style="cursor:pointer">
+        <div class="prod-img">
+          <button class="wish" onclick="event.stopPropagation()">♡</button>
+          🎧
+        </div>
+        <div class="prod-body">
+          <div class="prod-brand">Samsung</div>
+          <div class="prod-name">Galaxy Buds2 Pro · ANC · Hi-Fi 24bit · IPX7 · Estuche carga</div>
+          <div class="prod-stars">★★★★★ <span>(198)</span></div>
+          <div><span class="prod-price">$79.990</span></div>
+          <div class="prod-cuotas">6 cuotas de $13.332 sin interés</div>
+          <button class="add-btn" onclick="event.stopPropagation()">🛒 Agregar al carro</button>
+        </div>
+      </div>
+
+      <div class="prod-card" onclick="goToProduct('Apple AirPods Pro 2 · ANC Adaptativo · USB-C · Modo Transparencia','Apple','169990','','','🎧','NUEVO')" style="cursor:pointer">
+        <div class="prod-img">
+          <span class="badge-grn">NUEVO</span>
+          <button class="wish" onclick="event.stopPropagation()">♡</button>
+          🎧
+        </div>
+        <div class="prod-body">
+          <div class="prod-brand">Apple</div>
+          <div class="prod-name">AirPods Pro 2 · ANC Adaptativo · USB-C · Modo Transparencia</div>
+          <div class="prod-stars">★★★★★ <span>(643)</span></div>
+          <div><span class="prod-price">$169.990</span></div>
+          <div class="prod-cuotas">6 cuotas de $28.332 sin interés</div>
+          <button class="add-btn" onclick="event.stopPropagation()">🛒 Agregar al carro</button>
+        </div>
+      </div>
+
+      <div class="prod-card" onclick="goToProduct('Xiaomi Buds 4 Pro · LDAC · ANC · Hasta 38h total · Carga inalámbrica','Xiaomi','44990','50990','12','🎧')" style="cursor:pointer">
+        <div class="prod-img">
+          <span class="badge-red">-12%</span>
+          <button class="wish" onclick="event.stopPropagation()">♡</button>
+          🎧
+        </div>
+        <div class="prod-body">
+          <div class="prod-brand">Xiaomi</div>
+          <div class="prod-name">Buds 4 Pro · LDAC · ANC · Hasta 38h total · Carga inalámbrica</div>
+          <div class="prod-stars">★★★★☆ <span>(134)</span></div>
+          <div><span class="prod-price">$44.990</span><span class="prod-old">$50.990</span></div>
+          <div class="prod-cuotas">6 cuotas de $7.498 sin interés</div>
+          <button class="add-btn" onclick="event.stopPropagation()">🛒 Agregar al carro</button>
+        </div>
+      </div>
+
+      <div class="prod-card" onclick="goToProduct('Anker Soundcore Q45 · ANC · Hi-Res Audio · 50h batería · Bluetooth 5.3','Anker','29990','','','🎧')" style="cursor:pointer">
+        <div class="prod-img">
+          <button class="wish" onclick="event.stopPropagation()">♡</button>
+          🎧
+        </div>
+        <div class="prod-body">
+          <div class="prod-brand">Anker</div>
+          <div class="prod-name">Soundcore Q45 · ANC · Hi-Res Audio · 50h batería · Bluetooth 5.3</div>
+          <div class="prod-stars">★★★★☆ <span>(89)</span></div>
+          <div><span class="prod-price">$29.990</span></div>
+          <div class="prod-cuotas">6 cuotas de $4.998 sin interés</div>
+          <button class="add-btn" onclick="event.stopPropagation()">🛒 Agregar al carro</button>
+        </div>
+      </div>
+
+      <div class="prod-card" onclick="goToProduct('Jabra Evolve2 55 · ANC · UC/MS · Bluetooth · Certificado Microsoft Teams','Jabra','119990','149990','20','🎧')" style="cursor:pointer">
+        <div class="prod-img">
+          <span class="badge-red">-20%</span>
+          <button class="wish" onclick="event.stopPropagation()">♡</button>
+          🎧
+        </div>
+        <div class="prod-body">
+          <div class="prod-brand">Jabra</div>
+          <div class="prod-name">Evolve2 55 · ANC · UC/MS · Bluetooth · Certificado Microsoft Teams</div>
+          <div class="prod-stars">★★★★★ <span>(67)</span></div>
+          <div><span class="prod-price">$119.990</span><span class="prod-old">$149.990</span></div>
+          <div class="prod-cuotas">6 cuotas de $19.998 sin interés</div>
+          <button class="add-btn" onclick="event.stopPropagation()">🛒 Agregar al carro</button>
+        </div>
+      </div>
+
+      <div class="prod-card" onclick="goToProduct('Sennheiser Momentum 4 · ANC · 60h batería · Ecualizador app · Bluetooth 5.2','Sennheiser','149990','','','🎧','STOCK LIMITADO')" style="cursor:pointer">
+        <div class="prod-img">
+          <span class="badge-org">STOCK LIMITADO</span>
+          <button class="wish" onclick="event.stopPropagation()">♡</button>
+          🎧
+        </div>
+        <div class="prod-body">
+          <div class="prod-brand">Sennheiser</div>
+          <div class="prod-name">Momentum 4 · ANC · 60h batería · Ecualizador app · Bluetooth 5.2</div>
+          <div class="prod-stars">★★★★★ <span>(143)</span></div>
+          <div><span class="prod-price">$149.990</span></div>
+          <div class="prod-cuotas">6 cuotas de $24.998 sin interés</div>
+          <button class="add-btn" onclick="event.stopPropagation()">🛒 Agregar al carro</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- PAGINATION -->
+    <div class="pagination">
+      <button class="page-btn active">1</button>
+      <button class="page-btn" onclick="changePage(this)">2</button>
+      <button class="page-btn" onclick="changePage(this)">3</button>
+      <span class="page-dots">…</span>
+      <button class="page-btn" onclick="changePage(this)">8</button>
+      <button class="page-btn" onclick="changePage(this)">›</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-body">
+    <div class="footer-brand">
+      <div class="flogo">IMEX<span>TEC</span> <small style="font-size:12px;font-weight:400;opacity:.6">electrónica</small></div>
+      <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,0.4);margin-bottom:10px">Encuéntranos en:</p>
+      <ul style="font-size:12px;color:rgba(255,255,255,0.6);line-height:1.7;margin-bottom:18px;max-width:280px;list-style:none;display:flex;flex-direction:column;gap:8px">
+        <li>📍 <b style="color:rgba(255,255,255,0.85)">Talca Centro</b><br><span style="padding-left:20px;display:block">Galería Salomon Sabag - C. 1 Sur 1339, Local 17</span></li>
+        <li>📍 <b style="color:rgba(255,255,255,0.85)">Plaza Maule</b><br><span style="padding-left:20px;display:block">Av. Circunvalación Oriente 1055, Piso -1</span></li>
+        <li>📍 <b style="color:rgba(255,255,255,0.85)">Go Florida</b><br><span style="padding-left:20px;display:block">Av. Colín 635, Mall Go Florida, Local 1031</span></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Navegación</h4>
+      <ul>
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="productos.html">Productos</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="fbot-inner">
+      <span class="fcopy">© 2017-2026 IMEXTEC Electrónica · Todos los derechos reservados · Chile</span>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/56929993941" target="_blank" class="whatsapp-float" title="WhatsApp">💬</a>
+<script src="../js/main.js"></script>
+<script>
+/* ── LEER PARÁMETROS URL ── */
+(function() {
+  const p = new URLSearchParams(window.location.search);
+  const cat = p.get('cat') || 'Categoría';
+  const sub = p.get('sub') || 'Subcategoría';
+
+  document.title = sub + ' | IMEXTEC Electrónica';
+  document.getElementById('bc-cat').textContent = cat;
+  document.getElementById('bc-cat').href = '#';
+  document.getElementById('bc-sub').textContent = sub;
+  document.getElementById('page-heading').textContent = sub;
+  document.getElementById('page-desc').textContent = 'Los mejores productos en ' + sub + ' al mejor precio';
+})();
+
+/* ── TOGGLE SECCIÓN FILTRO ── */
+function toggleSection(title) {
+  title.classList.toggle('open');
+  const content = title.nextElementSibling;
+  if (content) content.style.display = title.classList.contains('open') ? '' : 'none';
+}
+
+/* ── APLICAR PRECIO ── */
+function applyPrice() {
+  const min = document.getElementById('priceMin').value;
+  const max = document.getElementById('priceMax').value;
+  if (min || max) {
+    showFilterTag('Precio: $' + (min || '0') + ' – $' + (max || '∞'));
+  }
+}
+
+/* ── MOSTRAR TAG DE FILTRO ACTIVO ── */
+function showFilterTag(label) {
+  const bar = document.getElementById('activeFilters');
+  bar.style.display = 'flex';
+  const tag = document.createElement('span');
+  tag.className = 'filter-tag';
+  tag.innerHTML = label + ' <span class="x">×</span>';
+  tag.onclick = () => { tag.remove(); if (!bar.children.length || bar.children.length === 1) bar.style.display = 'none'; };
+  bar.appendChild(tag);
+}
+
+/* ── LIMPIAR FILTROS ── */
+function clearFilters() {
+  document.querySelectorAll('.filter-sidebar input').forEach(i => { i.checked = false; i.value = ''; });
+  document.getElementById('activeFilters').innerHTML = '<span style="font-size:12px;font-weight:600;color:var(--gray-5)">Filtros activos:</span>';
+  document.getElementById('activeFilters').style.display = 'none';
+}
+
+/* ── SORT ── */
+function handleSort(val) { /* sorting logic placeholder */ }
+
+/* ── VIEW TOGGLE ── */
+function setView(type, btn) {
+  document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const grid = document.getElementById('prodGrid');
+  if (type === 'list') {
+    grid.style.gridTemplateColumns = '1fr';
+  } else {
+    grid.style.gridTemplateColumns = '';
+  }
+}
+
+/* ── PAGINACIÓN ── */
+function changePage(btn) {
+  document.querySelectorAll('.page-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ── IR A DETALLE DE PRODUCTO ── */
+function goToProduct(name, brand, price, old, disc, emoji, badge) {
+  const p = new URLSearchParams(window.location.search);
+  const params = new URLSearchParams({
+    cat:   p.get('cat') || '',
+    sub:   p.get('sub') || '',
+    name:  name  || '',
+    brand: brand || '',
+    price: price || '',
+    old:   old   || '',
+    disc:  disc  || '',
+    emoji: emoji || '🎧',
+    badge: badge || ''
+  });
+  window.location.href = 'producto.html?' + params.toString();
+}
+</script>
+</body>
+</html>

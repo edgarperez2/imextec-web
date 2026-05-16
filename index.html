@@ -1,0 +1,864 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IMEXTEC Electrónica | Tecnología al mejor precio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Barlow:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+
+</head>
+<body>
+
+<!-- TOP INFO BAR -->
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <div class="top-bar-left">
+      <span>📦 <b>Despacho gratis</b> sobre $30.000</span>
+      <span>💳 Hasta <b>6 cuotas sin interés</b></span>
+      <span>🚚 <b>Envíos</b> a todo Chile</span>
+    </div>
+    <div class="top-bar-right">
+      <a href="#">🗺️ Sucursales</a>
+      <a href="#">❓ Cómo Comprar</a>
+      <a href="#">📋 Seguimiento</a>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN HEADER -->
+<header>
+  <div class="header-main">
+    <a href="#"><img class="logo-img" src="images/logo.webp" alt="IMEXTEC Electrónica"></a>
+
+    <div class="header-search">
+      <input type="text" placeholder="Buscar productos, marcas, categorías...">
+      <button>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </button>
+    </div>
+
+    <nav class="header-nav">
+      <a href="#" class="hn-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        Mi Cuenta
+      </a>
+      <a href="pages/productos.html" class="hn-link">🛍️ Productos</a>
+      <a href="pages/contacto.html" class="hn-link">✉️ Contacto</a>
+      <button class="cart-btn">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        $0 <span id="cart-total"></span>
+        <span class="cart-badge" id="cart-count">0</span>
+      </button>
+    </nav>
+
+    <div class="contact-info">
+      <div class="ph">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.45 2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.73 14z"/></svg>
+        (+56) 92 999 3941
+      </div>
+      <div class="em">Email: contacto@imextec.cl</div>
+    </div>
+  </div>
+</header>
+
+<!-- CATEGORY NAVBAR (sticky) -->
+<nav class="cat-navbar">
+  <div class="cat-navbar-inner">
+    <div class="cnav-item">
+      <a href="#" class="cnav-link active has-drop">🔊 Audio</a>
+      <div class="cnav-dropdown">
+        <a href="pages/subcategoria.html?cat=Audio&sub=Audífonos+Con+Cable">🎧 Audífonos Con Cable</a>
+        <a href="pages/subcategoria.html?cat=Audio&sub=Audífonos+Inalámbricos">📻 Audífonos Inalámbricos</a>
+        <a href="pages/subcategoria.html?cat=Audio&sub=Cables+y+Accesorios">🔌 Cables y Accesorios</a>
+        <a href="pages/subcategoria.html?cat=Audio&sub=Micrófonos">🎙️ Micrófonos</a>
+        <a href="pages/subcategoria.html?cat=Audio&sub=Radios+y+Parlantes">📢 Radios y Parlantes</a>
+      </div>
+    </div>
+    <div class="cnav-item">
+      <a href="#" class="cnav-link has-drop">📷 Cámaras</a>
+      <div class="cnav-dropdown">
+        <a href="pages/subcategoria.html?cat=Cámaras&sub=Accesorios+Cámaras">🎒 Accesorios Cámaras</a>
+        <a href="pages/subcategoria.html?cat=Cámaras&sub=Cámaras+de+Seguridad">🔐 Cámaras de Seguridad</a>
+        <a href="pages/subcategoria.html?cat=Cámaras&sub=Cámaras+Auto">🚗 Cámaras Auto</a>
+      </div>
+    </div>
+    <div class="cnav-item">
+      <a href="#" class="cnav-link has-drop">💻 Computación</a>
+      <div class="cnav-dropdown">
+        <a href="pages/subcategoria.html?cat=Computación&sub=Accesorios+Computadores">🖥️ Accesorios Computadores</a>
+        <a href="pages/subcategoria.html?cat=Computación&sub=Almacenamiento">💾 Almacenamiento</a>
+        <a href="pages/subcategoria.html?cat=Computación&sub=Cables+Computación">🔌 Cables Computación</a>
+        <a href="pages/subcategoria.html?cat=Computación&sub=Cargadores+Notebook">🔋 Cargadores Notebook</a>
+        <a href="pages/subcategoria.html?cat=Computación&sub=Conectividad+y+Redes">📡 Conectividad y Redes</a>
+        <a href="pages/subcategoria.html?cat=Computación&sub=Mouse+y+Teclados">🖱️ Mouse y Teclados</a>
+        <a href="pages/subcategoria.html?cat=Computación&sub=Tintas+y+Toner+Impresoras">🖨️ Tintas y Toner Impresoras</a>
+        <a href="pages/subcategoria.html?cat=Computación&sub=Teclados">⌨️ Teclados</a>
+      </div>
+    </div>
+    <div class="cnav-item">
+      <a href="#" class="cnav-link has-drop">⚡ Electrónica</a>
+      <div class="cnav-dropdown">
+        <a href="pages/subcategoria.html?cat=Electrónica&sub=Accesorios+Electrónica">🔧 Accesorios Electrónica</a>
+        <a href="pages/subcategoria.html?cat=Electrónica&sub=Pilas+y+Baterías">🔋 Pilas y Baterías</a>
+        <a href="pages/subcategoria.html?cat=Electrónica&sub=Cargadores+de+Pilas">⚡ Cargadores de Pilas</a>
+        <a href="pages/subcategoria.html?cat=Electrónica&sub=Cargadores+y+Transformadores">🔌 Cargadores y Transformadores</a>
+        <a href="pages/subcategoria.html?cat=Electrónica&sub=Calculadoras">🧮 Calculadoras</a>
+      </div>
+    </div>
+    <div class="cnav-item">
+      <a href="#" class="cnav-link has-drop">🎮 Gamers</a>
+      <div class="cnav-dropdown">
+        <a href="pages/subcategoria.html?cat=Gamers&sub=Audífonos+Gamers">🎧 Audífonos Gamers</a>
+        <a href="pages/subcategoria.html?cat=Gamers&sub=Teclados+Gamers">⌨️ Teclados Gamers</a>
+        <a href="pages/subcategoria.html?cat=Gamers&sub=Accesorios+Gamers">🕹️ Accesorios Gamers</a>
+        <a href="pages/subcategoria.html?cat=Gamers&sub=Mouse+Gamers">🖱️ Mouse Gamers</a>
+        <a href="pages/subcategoria.html?cat=Gamers&sub=Joystick+y+Gamepad">🎮 Joystick y Gamepad</a>
+        <a href="pages/subcategoria.html?cat=Gamers&sub=Consolas+de+Juegos">🎮 Consolas de Juegos</a>
+      </div>
+    </div>
+    <div class="cnav-item">
+      <a href="#" class="cnav-link has-drop">📺 Video y Televisión</a>
+      <div class="cnav-dropdown">
+        <a href="pages/subcategoria.html?cat=Video+y+Televisión&sub=Antenas+y+Controles+TV">📡 Antenas y Controles TV</a>
+        <a href="pages/subcategoria.html?cat=Video+y+Televisión&sub=Cables+y+Adaptadores">🔌 Cables y Adaptadores</a>
+        <a href="pages/subcategoria.html?cat=Video+y+Televisión&sub=Soportes+TV">🖥️ Soportes TV</a>
+        <a href="pages/subcategoria.html?cat=Video+y+Televisión&sub=TV+Box">📦 TV Box</a>
+      </div>
+    </div>
+    <div class="cnav-item">
+      <a href="#" class="cnav-link has-drop">🔒 Seguridad</a>
+      <div class="cnav-dropdown">
+        <a href="pages/subcategoria.html?cat=Seguridad&sub=Accesorios+Seguridad">🛡️ Accesorios Seguridad</a>
+        <a href="pages/subcategoria.html?cat=Seguridad&sub=Timbres+y+Alarmas">🔔 Timbres y Alarmas</a>
+        <a href="pages/subcategoria.html?cat=Seguridad&sub=Radios+UHF/VHF">📻 Radios UHF/VHF</a>
+      </div>
+    </div>
+    <div class="cnav-item">
+      <a href="#" class="cnav-link has-drop">📱 Telefonía</a>
+      <div class="cnav-dropdown">
+        <a href="pages/subcategoria.html?cat=Telefonía&sub=Smartwatch+y+Smartband">⌚ Smartwatch y Smartband</a>
+        <a href="pages/subcategoria.html?cat=Telefonía&sub=Accesorios+Smartphone">📱 Accesorios Smartphone</a>
+        <a href="pages/subcategoria.html?cat=Telefonía&sub=Cables+Smartphones">🔌 Cables Smartphones</a>
+        <a href="pages/subcategoria.html?cat=Telefonía&sub=Teléfono+Senior">📞 Teléfono Senior</a>
+        <a href="pages/subcategoria.html?cat=Telefonía&sub=Soportes+Celulares">🗜️ Soportes Celulares</a>
+        <a href="pages/subcategoria.html?cat=Telefonía&sub=Cargadores+Smartphones">⚡ Cargadores Smartphones</a>
+        <a href="pages/subcategoria.html?cat=Telefonía&sub=Baterías+Externas">🔋 Baterías Externas</a>
+      </div>
+    </div>
+    <div class="cnav-item">
+      <a href="#" class="cnav-link has-drop">💡 Iluminación</a>
+      <div class="cnav-dropdown">
+        <a href="pages/subcategoria.html?cat=Iluminación&sub=Accesorios+Linternas">🔦 Accesorios Linternas</a>
+        <a href="pages/subcategoria.html?cat=Iluminación&sub=Punteros+Láser">🔴 Punteros Láser</a>
+        <a href="pages/subcategoria.html?cat=Iluminación&sub=Cintas+LED">💡 Cintas LED</a>
+        <a href="pages/subcategoria.html?cat=Iluminación&sub=Linternas+y+Focos+LED">🔦 Linternas y Focos LED</a>
+        <a href="pages/subcategoria.html?cat=Iluminación&sub=Luces+y+Accesorios+Fiesta">🎉 Luces y Accesorios Fiesta</a>
+      </div>
+    </div>
+    <div class="cnav-item">
+      <a href="#" class="cnav-link has-drop">🎵 Música</a>
+      <div class="cnav-dropdown">
+        <a href="pages/subcategoria.html?cat=Música&sub=Instrumentos">🎸 Instrumentos</a>
+      </div>
+    </div>
+    <div class="cnav-item">
+      <a href="#" class="cnav-link has-drop">🌿 Bienestar y Recreación</a>
+      <div class="cnav-dropdown">
+        <a href="pages/subcategoria.html?cat=Bienestar+y+Recreación&sub=Cuidado+Personal">💆 Cuidado Personal</a>
+        <a href="pages/subcategoria.html?cat=Bienestar+y+Recreación&sub=Recreación">🎯 Recreación</a>
+      </div>
+    </div>
+    <a href="pages/subcategoria.html?cat=Outdoor&sub=Outdoor" class="cnav-link">🌲 Outdoor</a>
+  </div>
+</nav>
+
+<!-- MAIN PAGE -->
+<div class="page">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-title">
+      CATEGORÍAS
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </div>
+    <a href="#" class="sb-toggle oferta">🔥 OFERTAS</a>
+
+    <div class="sb-item">
+      <button class="sb-toggle">🔊 Audio <span class="sb-arrow">›</span></button>
+      <div class="sb-submenu">
+        <a href="pages/subcategoria.html?cat=Audio&sub=Audífonos+Con+Cable">🎧 Audífonos Con Cable</a>
+        <a href="pages/subcategoria.html?cat=Audio&sub=Audífonos+Inalámbricos">📻 Audífonos Inalámbricos</a>
+        <a href="pages/subcategoria.html?cat=Audio&sub=Cables+y+Accesorios">🔌 Cables y Accesorios</a>
+        <a href="pages/subcategoria.html?cat=Audio&sub=Micrófonos">🎙️ Micrófonos</a>
+        <a href="pages/subcategoria.html?cat=Audio&sub=Radios+y+Parlantes">📢 Radios y Parlantes</a>
+      </div>
+    </div>
+
+    <div class="sb-item">
+      <button class="sb-toggle">📷 Cámaras <span class="sb-arrow">›</span></button>
+      <div class="sb-submenu">
+        <a href="pages/subcategoria.html?cat=Cámaras&sub=Accesorios+Cámaras">🎒 Accesorios Cámaras</a>
+        <a href="pages/subcategoria.html?cat=Cámaras&sub=Cámaras+de+Seguridad">🔐 Cámaras de Seguridad</a>
+        <a href="pages/subcategoria.html?cat=Cámaras&sub=Cámaras+Auto">🚗 Cámaras Auto</a>
+      </div>
+    </div>
+
+    <div class="sb-item">
+      <button class="sb-toggle">💻 Computación <span class="sb-arrow">›</span></button>
+      <div class="sb-submenu">
+        <a href="pages/subcategoria.html?cat=Computación&sub=Accesorios+Computadores">🖥️ Accesorios Computadores</a>
+        <a href="pages/subcategoria.html?cat=Computación&sub=Almacenamiento">💾 Almacenamiento</a>
+        <a href="pages/subcategoria.html?cat=Computación&sub=Cables+Computación">🔌 Cables Computación</a>
+        <a href="pages/subcategoria.html?cat=Computación&sub=Cargadores+Notebook">🔋 Cargadores Notebook</a>
+        <a href="pages/subcategoria.html?cat=Computación&sub=Conectividad+y+Redes">📡 Conectividad y Redes</a>
+        <a href="pages/subcategoria.html?cat=Computación&sub=Mouse+y+Teclados">🖱️ Mouse y Teclados</a>
+        <a href="pages/subcategoria.html?cat=Computación&sub=Tintas+y+Toner+Impresoras">🖨️ Tintas y Toner Impresoras</a>
+        <a href="pages/subcategoria.html?cat=Computación&sub=Teclados">⌨️ Teclados</a>
+      </div>
+    </div>
+
+    <div class="sb-item">
+      <button class="sb-toggle">⚡ Electrónica <span class="sb-arrow">›</span></button>
+      <div class="sb-submenu">
+        <a href="pages/subcategoria.html?cat=Electrónica&sub=Accesorios+Electrónica">🔧 Accesorios Electrónica</a>
+        <a href="pages/subcategoria.html?cat=Electrónica&sub=Pilas+y+Baterías">🔋 Pilas y Baterías</a>
+        <a href="pages/subcategoria.html?cat=Electrónica&sub=Cargadores+de+Pilas">⚡ Cargadores de Pilas</a>
+        <a href="pages/subcategoria.html?cat=Electrónica&sub=Cargadores+y+Transformadores">🔌 Cargadores y Transformadores</a>
+        <a href="pages/subcategoria.html?cat=Electrónica&sub=Calculadoras">🧮 Calculadoras</a>
+      </div>
+    </div>
+
+    <div class="sb-item">
+      <button class="sb-toggle">🎮 Gamers <span class="sb-arrow">›</span></button>
+      <div class="sb-submenu">
+        <a href="pages/subcategoria.html?cat=Gamers&sub=Audífonos+Gamers">🎧 Audífonos Gamers</a>
+        <a href="pages/subcategoria.html?cat=Gamers&sub=Teclados+Gamers">⌨️ Teclados Gamers</a>
+        <a href="pages/subcategoria.html?cat=Gamers&sub=Accesorios+Gamers">🕹️ Accesorios Gamers</a>
+        <a href="pages/subcategoria.html?cat=Gamers&sub=Mouse+Gamers">🖱️ Mouse Gamers</a>
+        <a href="pages/subcategoria.html?cat=Gamers&sub=Joystick+y+Gamepad">🎮 Joystick y Gamepad</a>
+        <a href="pages/subcategoria.html?cat=Gamers&sub=Consolas+de+Juegos">🎮 Consolas de Juegos</a>
+      </div>
+    </div>
+
+    <div class="sb-item">
+      <button class="sb-toggle">📺 Video y Televisión <span class="sb-arrow">›</span></button>
+      <div class="sb-submenu">
+        <a href="pages/subcategoria.html?cat=Video+y+Televisión&sub=Antenas+y+Controles+TV">📡 Antenas y Controles TV</a>
+        <a href="pages/subcategoria.html?cat=Video+y+Televisión&sub=Cables+y+Adaptadores">🔌 Cables y Adaptadores</a>
+        <a href="pages/subcategoria.html?cat=Video+y+Televisión&sub=Soportes+TV">🖥️ Soportes TV</a>
+        <a href="pages/subcategoria.html?cat=Video+y+Televisión&sub=TV+Box">📦 TV Box</a>
+      </div>
+    </div>
+
+    <div class="sb-item">
+      <button class="sb-toggle">🔒 Seguridad <span class="sb-arrow">›</span></button>
+      <div class="sb-submenu">
+        <a href="pages/subcategoria.html?cat=Seguridad&sub=Accesorios+Seguridad">🛡️ Accesorios Seguridad</a>
+        <a href="pages/subcategoria.html?cat=Seguridad&sub=Timbres+y+Alarmas">🔔 Timbres y Alarmas</a>
+        <a href="pages/subcategoria.html?cat=Seguridad&sub=Radios+UHF/VHF">📻 Radios UHF/VHF</a>
+      </div>
+    </div>
+
+    <div class="sb-item">
+      <button class="sb-toggle">📱 Telefonía <span class="sb-arrow">›</span></button>
+      <div class="sb-submenu">
+        <a href="pages/subcategoria.html?cat=Telefonía&sub=Smartwatch+y+Smartband">⌚ Smartwatch y Smartband</a>
+        <a href="pages/subcategoria.html?cat=Telefonía&sub=Accesorios+Smartphone">📱 Accesorios Smartphone</a>
+        <a href="pages/subcategoria.html?cat=Telefonía&sub=Cables+Smartphones">🔌 Cables Smartphones</a>
+        <a href="pages/subcategoria.html?cat=Telefonía&sub=Teléfono+Senior">📞 Teléfono Senior</a>
+        <a href="pages/subcategoria.html?cat=Telefonía&sub=Soportes+Celulares">🗜️ Soportes Celulares</a>
+        <a href="pages/subcategoria.html?cat=Telefonía&sub=Cargadores+Smartphones">⚡ Cargadores Smartphones</a>
+        <a href="pages/subcategoria.html?cat=Telefonía&sub=Baterías+Externas">🔋 Baterías Externas</a>
+      </div>
+    </div>
+
+    <div class="sb-item">
+      <button class="sb-toggle">💡 Iluminación <span class="sb-arrow">›</span></button>
+      <div class="sb-submenu">
+        <a href="pages/subcategoria.html?cat=Iluminación&sub=Accesorios+Linternas">🔦 Accesorios Linternas</a>
+        <a href="pages/subcategoria.html?cat=Iluminación&sub=Punteros+Láser">🔴 Punteros Láser</a>
+        <a href="pages/subcategoria.html?cat=Iluminación&sub=Cintas+LED">💡 Cintas LED</a>
+        <a href="pages/subcategoria.html?cat=Iluminación&sub=Linternas+y+Focos+LED">🔦 Linternas y Focos LED</a>
+        <a href="pages/subcategoria.html?cat=Iluminación&sub=Luces+y+Accesorios+Fiesta">🎉 Luces y Accesorios Fiesta</a>
+      </div>
+    </div>
+
+    <div class="sb-item">
+      <button class="sb-toggle">🎵 Música <span class="sb-arrow">›</span></button>
+      <div class="sb-submenu">
+        <a href="pages/subcategoria.html?cat=Música&sub=Instrumentos">🎸 Instrumentos</a>
+      </div>
+    </div>
+
+    <div class="sb-item">
+      <button class="sb-toggle">🌿 Bienestar y Recreación <span class="sb-arrow">›</span></button>
+      <div class="sb-submenu">
+        <a href="pages/subcategoria.html?cat=Bienestar+y+Recreación&sub=Cuidado+Personal">💆 Cuidado Personal</a>
+        <a href="pages/subcategoria.html?cat=Bienestar+y+Recreación&sub=Recreación">🎯 Recreación</a>
+      </div>
+    </div>
+
+    <div class="sb-item">
+      <a href="pages/subcategoria.html?cat=Outdoor&sub=Outdoor" class="sb-toggle">🌲 Outdoor</a>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <div class="main-content">
+
+    <!-- HERO BANNER -->
+    <div class="hero-slider" id="heroSlider">
+
+      <div class="hero-slide-img active">
+        <img src="images/slide-1.png" alt="Servicio técnico - ¿Tu computador está lento?">
+      </div>
+      <div class="hero-slide-img">
+        <img src="images/slide-2.png" alt="Servicio técnico de computadores">
+      </div>
+      <div class="hero-slide-img">
+        <img src="images/slide-3.png" alt="IMEXTEC - Servicio técnico">
+      </div>
+
+      <!-- BOTÓN CONTÁCTANOS -->
+      <a href="pages/contacto.html" class="slider-cta">💬 Contáctanos</a>
+
+      <!-- FLECHAS -->
+      <button class="slider-arrow slider-prev" id="sliderPrev">&#8249;</button>
+      <button class="slider-arrow slider-next" id="sliderNext">&#8250;</button>
+
+      <!-- CONTROLES INFERIORES -->
+      <div class="slider-controls">
+        <button class="slider-playpause" id="sliderPlayPause" title="Pausar">⏸</button>
+        <div class="hero-dots" style="position:static;transform:none">
+          <button class="dot-btn active" data-index="0"></button>
+          <button class="dot-btn" data-index="1"></button>
+          <button class="dot-btn" data-index="2"></button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- PROMO STRIP -->
+    <div class="promo-strip">
+      <div class="promo-card">
+        <div class="promo-icon">🎮</div>
+        <div>
+          <div class="promo-tag">Hot Deal</div>
+          <div class="promo-title">Monitor 4K 27" 144Hz</div>
+          <div class="promo-sub">Desde $349.990 · Stock limitado</div>
+        </div>
+      </div>
+      <div class="promo-card">
+        <div class="promo-icon">💻</div>
+        <div>
+          <div class="promo-tag">Lanzamiento</div>
+          <div class="promo-title">PC Armada RTX 4060 Ti</div>
+          <div class="promo-sub">Desde $899.990 · 6 cuotas</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRODUCTS FEATURED -->
+    <div>
+      <div class="section-hd">
+        <h2 class="section-ttl">Oportunidades de la Semana</h2>
+        <div style="display:flex;align-items:center;gap:12px">
+          <div class="tab-pills">
+            <button class="tab-pill active">Top 20</button>
+            <button class="tab-pill">Gamers</button>
+            <button class="tab-pill">Computación</button>
+            <button class="tab-pill">Audio</button>
+          </div>
+          <a href="#" class="see-all">Ver todos →</a>
+        </div>
+      </div>
+
+      <div class="prod-grid">
+
+        <div class="prod-card">
+          <div class="prod-img">
+            <span class="badge-red">-22%</span>
+            <button class="wish">♡</button>
+            💻
+          </div>
+          <div class="prod-body">
+            <div class="prod-brand">Lenovo</div>
+            <div class="prod-name">IdeaPad Gaming 3 · Ryzen 5 7535HS · RTX 3050 · 8GB · 512GB SSD</div>
+            <div class="prod-stars">★★★★★ <span>(128 reseñas)</span></div>
+            <div><span class="prod-price">$549.990</span><span class="prod-old">$699.990</span></div>
+            <div class="prod-cuotas">6 cuotas de $91.665 sin interés</div>
+            <button class="add-btn" onclick="addToCart('Lenovo IdeaPad Gaming 3',549990)">🛒 Agregar al carro</button>
+          </div>
+        </div>
+
+        <div class="prod-card">
+          <div class="prod-img">
+            <span class="badge-grn">NUEVO</span>
+            <button class="wish">♡</button>
+            🎧
+          </div>
+          <div class="prod-body">
+            <div class="prod-brand">HyperX</div>
+            <div class="prod-name">Cloud Alpha Wireless · 300h batería · 7.1 Surround · PC / PS4 / PS5</div>
+            <div class="prod-stars">★★★★★ <span>(247 reseñas)</span></div>
+            <div><span class="prod-price">$79.990</span></div>
+            <div class="prod-cuotas">6 cuotas de $13.332 sin interés</div>
+            <button class="add-btn" onclick="addToCart('HyperX Cloud Alpha',79990)">🛒 Agregar al carro</button>
+          </div>
+        </div>
+
+        <div class="prod-card">
+          <div class="prod-img">
+            <span class="badge-red">-15%</span>
+            <button class="wish">♡</button>
+            ⌨️
+          </div>
+          <div class="prod-body">
+            <div class="prod-brand">Redragon</div>
+            <div class="prod-name">Teclado Mecánico K552 · Switch Red · RGB · TKL · Anti-ghosting</div>
+            <div class="prod-stars">★★★★☆ <span>(89 reseñas)</span></div>
+            <div><span class="prod-price">$42.990</span><span class="prod-old">$50.990</span></div>
+            <div class="prod-cuotas">6 cuotas de $7.165 sin interés</div>
+            <button class="add-btn" onclick="addToCart('Redragon K552',42990)">🛒 Agregar al carro</button>
+          </div>
+        </div>
+
+        <div class="prod-card">
+          <div class="prod-img">
+            <button class="wish">♡</button>
+            🖱️
+          </div>
+          <div class="prod-body">
+            <div class="prod-brand">Logitech</div>
+            <div class="prod-name">G502 X PLUS · Inalámbrico · LIGHTFORCE · 25K DPI · LIGHTSPEED RGB</div>
+            <div class="prod-stars">★★★★★ <span>(312 reseñas)</span></div>
+            <div><span class="prod-price">$94.990</span></div>
+            <div class="prod-cuotas">6 cuotas de $15.832 sin interés</div>
+            <button class="add-btn" onclick="addToCart('Logitech G502 X PLUS',94990)">🛒 Agregar al carro</button>
+          </div>
+        </div>
+
+        <div class="prod-card">
+          <div class="prod-img">
+            <span class="badge-red">-30%</span>
+            <button class="wish">♡</button>
+            💾
+          </div>
+          <div class="prod-body">
+            <div class="prod-brand">Samsung</div>
+            <div class="prod-name">SSD 870 EVO 1TB · SATA 3 · Hasta 560MB/s · 2.5" para PC y Notebook</div>
+            <div class="prod-stars">★★★★★ <span>(521 reseñas)</span></div>
+            <div><span class="prod-price">$59.990</span><span class="prod-old">$84.990</span></div>
+            <div class="prod-cuotas">6 cuotas de $9.998 sin interés</div>
+            <button class="add-btn" onclick="addToCart('Samsung SSD 870 EVO 1TB',59990)">🛒 Agregar al carro</button>
+          </div>
+        </div>
+
+        <div class="prod-card">
+          <div class="prod-img">
+            <span class="badge-grn">NUEVO</span>
+            <button class="wish">♡</button>
+            🧠
+          </div>
+          <div class="prod-body">
+            <div class="prod-brand">Kingston</div>
+            <div class="prod-name">FURY Beast DDR5 32GB · 6000MHz · CL36 · Intel XMP 3.0 · RGB</div>
+            <div class="prod-stars">★★★★★ <span>(76 reseñas)</span></div>
+            <div><span class="prod-price">$89.990</span></div>
+            <div class="prod-cuotas">6 cuotas de $14.998 sin interés</div>
+            <button class="add-btn" onclick="addToCart('Kingston FURY DDR5 32GB',89990)">🛒 Agregar al carro</button>
+          </div>
+        </div>
+
+        <div class="prod-card">
+          <div class="prod-img">
+            <span class="badge-red">-10%</span>
+            <button class="wish">♡</button>
+            📺
+          </div>
+          <div class="prod-body">
+            <div class="prod-brand">LG</div>
+            <div class="prod-name">Monitor UltraGear 27GP850 · 27" QHD · IPS · 165Hz · 1ms · G-Sync</div>
+            <div class="prod-stars">★★★★★ <span>(198 reseñas)</span></div>
+            <div><span class="prod-price">$269.990</span><span class="prod-old">$299.990</span></div>
+            <div class="prod-cuotas">6 cuotas de $44.998 sin interés</div>
+            <button class="add-btn" onclick="addToCart('LG UltraGear 27GP850',269990)">🛒 Agregar al carro</button>
+          </div>
+        </div>
+
+        <div class="prod-card">
+          <div class="prod-img">
+            <span class="badge-org">DESTACADO</span>
+            <button class="wish">♡</button>
+            📷
+          </div>
+          <div class="prod-body">
+            <div class="prod-brand">Sony</div>
+            <div class="prod-name">Cámara Alpha ZV-E10 · APS-C · 24MP · 4K · Intercambiable + lente 16-50mm</div>
+            <div class="prod-stars">★★★★★ <span>(143 reseñas)</span></div>
+            <div><span class="prod-price">$449.990</span></div>
+            <div class="prod-cuotas">6 cuotas de $74.998 sin interés</div>
+            <button class="add-btn" onclick="addToCart('Sony Alpha ZV-E10',449990)">🛒 Agregar al carro</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CAMPAÑAS DESTACADAS -->
+    <div>
+      <div class="section-hd">
+        <h2 class="section-ttl">Campañas Destacadas</h2>
+        <a href="#" class="see-all">Ver todas →</a>
+      </div>
+      <div class="camp-grid">
+
+        <div class="camp-card camp-primary">
+          <div class="camp-inner">
+            <div class="camp-tag">⚡ Oferta Relámpago</div>
+            <div class="camp-title">Gaming<br>Week 2026</div>
+            <div class="camp-sub">Hasta 40% de descuento en periféricos, consolas y accesorios gamer</div>
+            <button class="btn-green" style="margin-top:18px">Ver campaña →</button>
+          </div>
+          <div class="camp-deco">🎮</div>
+        </div>
+
+        <div class="camp-col">
+          <div class="camp-card camp-secondary">
+            <div class="camp-inner">
+              <div class="camp-tag">💻 Tech Upgrade</div>
+              <div class="camp-title">Notebooks<br>al mejor precio</div>
+              <div class="camp-sub">Desde $399.990 · 6 cuotas sin interés</div>
+              <button class="btn-green" style="margin-top:12px;font-size:12px;padding:9px 18px">Ver ahora →</button>
+            </div>
+            <div class="camp-deco">💻</div>
+          </div>
+          <div class="camp-card camp-tertiary">
+            <div class="camp-inner">
+              <div class="camp-tag">📱 Accesorios</div>
+              <div class="camp-title">Telefonía<br>&amp; SmartWear</div>
+              <div class="camp-sub">Smartwatch, cargadores, cables y más</div>
+              <button class="btn-green" style="margin-top:12px;font-size:12px;padding:9px 18px">Ver ahora →</button>
+            </div>
+            <div class="camp-deco">⌚</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- RECOMENDACIONES PERSONALES -->
+    <div>
+      <div class="section-hd">
+        <h2 class="section-ttl">Recomendados para ti</h2>
+        <a href="#" class="see-all">Ver todos →</a>
+      </div>
+      <div class="prod-grid">
+
+        <div class="prod-card">
+          <div class="prod-img">
+            <span class="badge-grn">TOP</span>
+            <button class="wish">♡</button>
+            🎧
+          </div>
+          <div class="prod-body">
+            <div class="prod-brand">Sony</div>
+            <div class="prod-name">WH-1000XM5 · Noise Cancelling · 30h batería · Hi-Res Audio</div>
+            <div class="prod-stars">★★★★★ <span>(408 reseñas)</span></div>
+            <div><span class="prod-price">$219.990</span></div>
+            <div class="prod-cuotas">6 cuotas de $36.665 sin interés</div>
+            <button class="add-btn" onclick="addToCart('Sony WH-1000XM5',219990)">🛒 Agregar al carro</button>
+          </div>
+        </div>
+
+        <div class="prod-card">
+          <div class="prod-img">
+            <span class="badge-red">-18%</span>
+            <button class="wish">♡</button>
+            🖱️
+          </div>
+          <div class="prod-body">
+            <div class="prod-brand">Razer</div>
+            <div class="prod-name">DeathAdder V3 Pro · Inalámbrico · 30K DPI · 90h batería</div>
+            <div class="prod-stars">★★★★★ <span>(184 reseñas)</span></div>
+            <div><span class="prod-price">$84.990</span><span class="prod-old">$103.990</span></div>
+            <div class="prod-cuotas">6 cuotas de $14.165 sin interés</div>
+            <button class="add-btn" onclick="addToCart('Razer DeathAdder V3 Pro',84990)">🛒 Agregar al carro</button>
+          </div>
+        </div>
+
+        <div class="prod-card">
+          <div class="prod-img">
+            <span class="badge-org">DESTACADO</span>
+            <button class="wish">♡</button>
+            ⌚
+          </div>
+          <div class="prod-body">
+            <div class="prod-brand">Xiaomi</div>
+            <div class="prod-name">Redmi Watch 4 · AMOLED 1.97" · GPS · SpO2 · 20 días batería</div>
+            <div class="prod-stars">★★★★☆ <span>(223 reseñas)</span></div>
+            <div><span class="prod-price">$44.990</span></div>
+            <div class="prod-cuotas">6 cuotas de $7.498 sin interés</div>
+            <button class="add-btn" onclick="addToCart('Xiaomi Redmi Watch 4',44990)">🛒 Agregar al carro</button>
+          </div>
+        </div>
+
+        <div class="prod-card">
+          <div class="prod-img">
+            <span class="badge-red">-25%</span>
+            <button class="wish">♡</button>
+            🔊
+          </div>
+          <div class="prod-body">
+            <div class="prod-brand">JBL</div>
+            <div class="prod-name">Flip 6 · Bluetooth 5.1 · IP67 · 12h batería · PartyBoost</div>
+            <div class="prod-stars">★★★★★ <span>(356 reseñas)</span></div>
+            <div><span class="prod-price">$59.990</span><span class="prod-old">$79.990</span></div>
+            <div class="prod-cuotas">6 cuotas de $9.998 sin interés</div>
+            <button class="add-btn" onclick="addToCart('JBL Flip 6',59990)">🛒 Agregar al carro</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- OFERTAS DESTACADAS -->
+    <div>
+      <div class="ofertas-header">
+        <h2 class="section-ttl">🔥 Ofertas Destacadas</h2>
+        <a href="#" class="see-all">Ver todas las ofertas →</a>
+      </div>
+      <div class="ofertas-body">
+        <div class="prod-grid">
+
+          <div class="prod-card">
+            <div class="prod-img">
+              <span class="badge-red">-35%</span>
+              <button class="wish">♡</button>
+              🖥️
+            </div>
+            <div class="prod-body">
+              <div class="prod-brand">ASUS</div>
+              <div class="prod-name">ROG Strix 27" QHD · 165Hz · IPS · G-Sync Compatible · HDR400</div>
+              <div class="prod-stars">★★★★★ <span>(97 reseñas)</span></div>
+              <div><span class="prod-price">$229.990</span><span class="prod-old">$354.990</span></div>
+              <div class="prod-cuotas">6 cuotas de $38.332 sin interés</div>
+              <button class="add-btn" onclick="addToCart('ASUS ROG Strix 27',229990)">🛒 Agregar al carro</button>
+            </div>
+          </div>
+
+          <div class="prod-card">
+            <div class="prod-img">
+              <span class="badge-red">-28%</span>
+              <button class="wish">♡</button>
+              🎙️
+            </div>
+            <div class="prod-body">
+              <div class="prod-brand">HyperX</div>
+              <div class="prod-name">QuadCast S · USB · Condensador · RGB · 4 patrones polares</div>
+              <div class="prod-stars">★★★★★ <span>(162 reseñas)</span></div>
+              <div><span class="prod-price">$79.990</span><span class="prod-old">$110.990</span></div>
+              <div class="prod-cuotas">6 cuotas de $13.332 sin interés</div>
+              <button class="add-btn" onclick="addToCart('HyperX QuadCast S',79990)">🛒 Agregar al carro</button>
+            </div>
+          </div>
+
+          <div class="prod-card">
+            <div class="prod-img">
+              <span class="badge-red">-20%</span>
+              <button class="wish">♡</button>
+              🔋
+            </div>
+            <div class="prod-body">
+              <div class="prod-brand">Anker</div>
+              <div class="prod-name">PowerCore 26800mAh · Carga rápida 65W · USB-C PD · 3 puertos</div>
+              <div class="prod-stars">★★★★★ <span>(289 reseñas)</span></div>
+              <div><span class="prod-price">$39.990</span><span class="prod-old">$49.990</span></div>
+              <div class="prod-cuotas">6 cuotas de $6.665 sin interés</div>
+              <button class="add-btn" onclick="addToCart('Anker PowerCore 26800',39990)">🛒 Agregar al carro</button>
+            </div>
+          </div>
+
+          <div class="prod-card">
+            <div class="prod-img">
+              <span class="badge-red">-40%</span>
+              <button class="wish">♡</button>
+              📡
+            </div>
+            <div class="prod-body">
+              <div class="prod-brand">TP-Link</div>
+              <div class="prod-name">Deco XE75 Mesh WiFi 6E · Tri-band · 3600Mbps · Pack 2 unidades</div>
+              <div class="prod-stars">★★★★★ <span>(74 reseñas)</span></div>
+              <div><span class="prod-price">$149.990</span><span class="prod-old">$249.990</span></div>
+              <div class="prod-cuotas">6 cuotas de $24.998 sin interés</div>
+              <button class="add-btn" onclick="addToCart('TP-Link Deco XE75',149990)">🛒 Agregar al carro</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- OFERTA BANNER -->
+    <div class="oferta-banner">
+      <div>
+        <div class="ob-label">⚡ Ofertas Flash — Solo por tiempo limitado</div>
+        <div class="ob-title">Los mejores precios del<br>mercado en tecnología</div>
+        <div class="ob-sub" style="margin-top:12px"><button class="btn-green">Ver todas las ofertas →</button></div>
+      </div>
+      <div class="ob-circle">
+        <span class="pct">30%</span>
+        <span class="off">DCTO</span>
+      </div>
+    </div>
+
+    <!-- FEATURES -->
+    <div class="features">
+      <div class="feat"><div class="feat-icon">🚀</div><div><div class="feat-ttl">Despacho Rápido</div><div class="feat-sub">24-72 hrs a todo Chile</div></div></div>
+      <div class="feat"><div class="feat-icon">🛡️</div><div><div class="feat-ttl">Garantía Oficial</div><div class="feat-sub">1 año en todos los productos</div></div></div>
+      <div class="feat"><div class="feat-icon">💳</div><div><div class="feat-ttl">6 Cuotas Sin Interés</div><div class="feat-sub">Con tarjeta de crédito</div></div></div>
+      <div class="feat"><div class="feat-icon">🔄</div><div><div class="feat-ttl">Cambio Fácil</div><div class="feat-sub">Devoluciones hasta 30 días</div></div></div>
+    </div>
+
+    <!-- BRANDS -->
+    <div class="brands-bar">
+      <span class="brands-lbl">Marcas</span>
+      <span class="brand">ASUS</span>
+      <span class="brand">Lenovo</span>
+      <span class="brand">Samsung</span>
+      <span class="brand">Logitech</span>
+      <span class="brand">Sony</span>
+      <span class="brand">Kingston</span>
+      <span class="brand">LG</span>
+      <span class="brand">HP</span>
+      <span class="brand">AMD</span>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="contact-band">
+      <div class="cb-text">
+        <h3>¿Necesitas asesoría?</h3>
+        <p>Nuestro equipo de expertos te ayuda a elegir el producto ideal</p>
+      </div>
+      <div class="cb-items">
+        <div class="cb-item"><span class="ico">📞</span><div><div class="lbl">Llámanos</div><div class="val">(+56) 92 999 3941</div></div></div>
+        <div class="cb-item"><span class="ico">💬</span><div><div class="lbl">WhatsApp</div><div class="val">+56 9 XXXX XXXX</div></div></div>
+        <div class="cb-item"><span class="ico">✉️</span><div><div class="lbl">Email</div><div class="val">contacto@imextec.cl</div></div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-body">
+    <div class="footer-brand">
+      <div class="flogo">IMEX<span>TEC</span> <small style="font-size:12px;font-weight:400;opacity:.6">electrónica</small></div>
+      <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,0.4);margin-bottom:10px">Encuéntranos en:</p>
+      <ul style="font-size:12px;color:rgba(255,255,255,0.6);line-height:1.7;margin-bottom:18px;max-width:280px;list-style:none;display:flex;flex-direction:column;gap:8px">
+        <li>📍 <b style="color:rgba(255,255,255,0.85)">Talca Centro</b><br><span style="padding-left:20px;display:block">Galería Salomon Sabag - C. 1 Sur 1339, Local 17</span></li>
+        <li>📍 <b style="color:rgba(255,255,255,0.85)">Plaza Maule</b><br><span style="padding-left:20px;display:block">Av. Circunvalación Oriente 1055, Piso -1</span></li>
+        <li>📍 <b style="color:rgba(255,255,255,0.85)">Go Florida</b><br><span style="padding-left:20px;display:block">Av. Colín 635, Mall Go Florida, Local 1031</span></li>
+      </ul>
+      <div class="socials">
+        <button class="soc-btn">📸</button>
+        <button class="soc-btn">📘</button>
+        <button class="soc-btn">🎵</button>
+        <button class="soc-btn">▶️</button>
+        <button class="soc-btn">💬</button>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Categorías</h4>
+      <ul>
+        <li><a href="#">Audio</a></li>
+        <li><a href="#">Cámaras</a></li>
+        <li><a href="#">Computación</a></li>
+        <li><a href="#">Electrónica</a></li>
+        <li><a href="#">Gamers</a></li>
+        <li><a href="#">Video y Televisión</a></li>
+        <li><a href="#">Seguridad</a></li>
+        <li><a href="#">Telefonía</a></li>
+        <li><a href="#">Iluminación</a></li>
+        <li><a href="#">Música</a></li>
+        <li><a href="#">Outdoor</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Información</h4>
+      <ul>
+        <li><a href="#">Sobre IMEXTEC</a></li>
+        <li><a href="#">Sucursales</a></li>
+        <li><a href="pages/productos.html">Todos los productos</a></li>
+        <li><a href="#">Medios de pago</a></li>
+        <li><a href="#">Despachos</a></li>
+        <li><a href="#">Garantías y devoluciones</a></li>
+        <li><a href="#">Preguntas frecuentes</a></li>
+        <li><a href="#">Términos y condiciones</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Mi Cuenta</h4>
+      <ul>
+        <li><a href="#">Iniciar sesión</a></li>
+        <li><a href="#">Crear cuenta</a></li>
+        <li><a href="#">Seguimiento de pedido</a></li>
+        <li><a href="#">Lista de deseos</a></li>
+        <li><a href="#">Historial de compras</a></li>
+        <li><a href="pages/contacto.html">Contáctanos</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <!-- MEDIOS DE PAGO + REDES -->
+    <div class="fbot-pay">
+      <div class="fbot-pay-left">
+        <span class="fbot-pay-lbl">Medios de pago</span>
+        <div class="fbot-pay-logos">
+          <span class="fpay-pill webpay">Webpay<br><small>Transbank</small></span>
+          <span class="fpay-pill mercado">Mercado<br><small>Pago</small></span>
+          <span class="fpay-pill santander">Santander</span>
+          <span class="fpay-pill bancoestado">BancoEstado</span>
+          <span class="fpay-pill transferencia">💸 Transferencia<br><small>Bancaria</small></span>
+        </div>
+      </div>
+      <div class="fbot-socials">
+        <a href="#" class="fsoc" title="Instagram">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="#" class="fsoc" title="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+        <a href="#" class="fsoc" title="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="#" class="fsoc" title="Twitch">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/></svg>
+        </a>
+        <a href="#" class="fsoc" title="Twitter / X">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="#" class="fsoc" title="YouTube">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+        </a>
+      </div>
+    </div>
+    <!-- COPYRIGHT -->
+    <div class="fbot-inner">
+      <span class="fcopy">© 2017-2026 IMEXTEC Electrónica · Todos los derechos reservados · Chile</span>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/56929993941" target="_blank" class="whatsapp-float" title="Contactar por WhatsApp">💬</a>
+
+<script src="js/main.js"></script>
+
+</body>
+</html>
+
+
