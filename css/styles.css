@@ -208,10 +208,10 @@ header{background:#fff;border-bottom:1px solid var(--gray-3);box-shadow:var(--sh
 .feat-sub{font-size:12px;color:var(--gray-5);margin-top:2px}
 
 /* ── BRANDS ── */
-.brands-bar{background:#fff;border:1px solid var(--gray-3);border-radius:var(--radius-md);padding:18px 28px;display:flex;align-items:center;justify-content:space-between;gap:1rem}
-.brands-lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--gray-4);white-space:nowrap}
-.brand{font-family:var(--font-head);font-size:15px;font-weight:800;color:var(--gray-4);transition:color .15s;cursor:pointer;white-space:nowrap}
-.brand:hover{color:var(--navy)}
+.brands-bar{background:var(--navy);border-radius:var(--radius-md);padding:20px 32px;display:flex;align-items:center;justify-content:space-between;gap:1rem;box-shadow:var(--shadow-md)}
+.brands-lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--green);white-space:nowrap;border-right:1px solid rgba(255,255,255,0.15);padding-right:20px}
+.brand{font-family:var(--font-head);font-size:15px;font-weight:800;color:rgba(255,255,255,0.55);transition:all .2s;cursor:pointer;white-space:nowrap;letter-spacing:0.03em}
+.brand:hover{color:#fff;transform:scale(1.08)}
 
 /* ── BANNER OFERTA ── */
 .oferta-banner{background:url('../images/banner.jpg') center/cover no-repeat;border-radius:var(--radius-md);padding:32px 40px;display:flex;align-items:center;justify-content:space-between;overflow:hidden;position:relative}
