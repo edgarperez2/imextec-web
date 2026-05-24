@@ -214,8 +214,8 @@ header{background:#fff;border-bottom:1px solid var(--gray-3);box-shadow:var(--sh
 .brand:hover{color:var(--navy)}
 
 /* ── BANNER OFERTA ── */
-.oferta-banner{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 100%);border-radius:var(--radius-md);padding:32px 40px;display:flex;align-items:center;justify-content:space-between;overflow:hidden;position:relative}
-.oferta-banner::before{content:'';position:absolute;right:-40px;top:-40px;width:220px;height:220px;border-radius:50%;background:rgba(24,184,58,0.1)}
+.oferta-banner{background:url('../images/banner.jpg') center/cover no-repeat;border-radius:var(--radius-md);padding:32px 40px;display:flex;align-items:center;justify-content:space-between;overflow:hidden;position:relative}
+.oferta-banner::before{content:'';position:absolute;inset:0;background:none}
 .ob-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:6px;font-family:var(--font-head)}
 .ob-title{font-family:var(--font-head);font-size:26px;font-weight:800;color:#fff;line-height:1.2;margin-bottom:6px}
 .ob-sub{font-size:13px;color:rgba(255,255,255,0.65)}
